@@ -4,7 +4,7 @@ import random
 from Way2SMS  import *
 from perf import *
 import time
-file = open('to.txt', 'r')
+file = open('to.txt', 'r').readlines() if os.path.isfile('./to.txt') else raw_input('[?] Enter , Separted Mobile Numbers: ').split(',')
 log = login()
 print '''
 
@@ -46,7 +46,7 @@ def start():
 	print "[+] Message Body : ", "\n\n", msg, "\n"
 	ok(msg)
 def ok(msg):
-	for line in file.readlines():
+	for line in file:
 		no = line.strip()
 		status = send(no,msg)
 		if status == True:
