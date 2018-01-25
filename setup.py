@@ -1,14 +1,19 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from __future__ import print_function
-from setuptools import setup, find_packages
-from setuptools.command.test import test as TestCommand
+
 import io
-import codecs
 import os
 import sys
+
+from setuptools import setup
+from setuptools.command.test import test as TestCommand
 
 import waytwo
 
 here = os.path.abspath(os.path.dirname(__file__))
+
 
 def read(*filenames, **kwargs):
     encoding = kwargs.get('encoding', 'utf-8')
@@ -19,12 +24,14 @@ def read(*filenames, **kwargs):
             buf.append(f.read())
     return sep.join(buf)
 
+
 long_description = read('README.md', 'CHANGES.txt')
+
 
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
-        self.test_args = []
+        self.test_args = ['--pspec']
         self.test_suite = True
 
     def run_tests(self):
@@ -32,13 +39,14 @@ class PyTest(TestCommand):
         errcode = pytest.main(self.test_args)
         sys.exit(errcode)
 
+
 setup(
     name='waytwo',
     version=waytwo.__version__,
     url='https://github.com/gowtham-sai/way2sms',
     license='Way2sms API Wrapper',
     author='Gowtham Sai',
-    tests_require=['pytest'],
+    tests_require=['pytest', 'pytest-pspec'],
     install_requires=['mechanize==0.3.6'],
     cmdclass={'test': PyTest},
     author_email='hello@gowtham-sai.com',
@@ -47,8 +55,8 @@ setup(
     packages=['waytwo'],
     include_package_data=True,
     platforms='any',
-    test_suite='waytwo.test.test_waytwo',
-    classifiers = [
+    test_suite='test',
+    classifiers=[
         'Programming Language :: Python',
         'Development Status :: 1 - Planning',
         'Natural Language :: English',
@@ -59,8 +67,8 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-        ],
+    ],
     extras_require={
-        'testing': ['pytest'],
+        'testing': ['pytest', 'pytest-pspec'],
     }
 )
