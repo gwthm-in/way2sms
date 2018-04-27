@@ -1,4 +1,4 @@
-pytest-pspec
+Way2SMS
 ==============
 
 .. image:: https://travis-ci.org/gowtham-sai/way2sms.svg?branch=master
