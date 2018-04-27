@@ -1,3 +1,6 @@
-from . import base
 __version__ = '0.0.1'
-__all__ = [base.WayTwo]
+__all__ = ['WayTwo']
+
+class WayTwo(object):
+    def __init__(self, username, password):
+      pass
