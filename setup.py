@@ -47,7 +47,7 @@ setup(
     license='Way2sms API Wrapper',
     author='Gowtham Sai',
     tests_require=['pytest', 'pytest-pspec'],
-    install_requires=['mechanize==0.3.6'],
+    install_requires=['mechanize==0.4.6'],
     cmdclass={'test': PyTest},
     author_email='hello@gowtham-sai.com',
     description='Automated REST API for way2sms',
